@@ -22,13 +22,12 @@ public class Main {
         Scanner in = new Scanner(System.in);
         Integer count = 0;
         System.out.println("Введите Фамилию Имя Отчество возраст и пол через пробел");
-        System.out.println("Для выхода введите quit и нажмите Enter");
-        System.out.println("Для сортировки списка по возрасту введите sort и нажмите Enter");
+        System.out.println("Для окончания ввода введите done и нажмите Enter");
 
-        while (!input.equals("quit") | !input.equals("sort")){    // вот тут не могу понять почему не срабатывает
-            input = in.nextLine();                                // условие quit или sort для выхода из цикла.
-            if (!input.equals("quit") | !input.equals("sort")){   // когда по остаётся что-то одно, quit или sort
-                String [] tmp = input.split(" ");           // то условие срабатывает
+        while (!input.equals("done")){
+            input = in.nextLine();
+            if (!input.equals("done")){
+                String [] tmp = input.split(" ");
                 id.add(count);
                 surname.add(tmp[0]);
                 name.add(tmp[1]);
@@ -38,7 +37,7 @@ public class Main {
                 count = count +1;
             }
         }
-        if (input.equals("quit")){
+        if (input.equals("done")){
             for (int i = 0; i < id.size(); i++) {
                 System.out.println(
                         id.get(i)+" "
@@ -51,21 +50,39 @@ public class Main {
             }
         }
 
-        if (input.equals("sort")){                                  //отсортировал Список age, а как его связать
-            System.out.println("Сортировка");                       //с другими спсиками понять не могу.
-            Collections.sort(age);
-            for (int i = 0; i < id.size(); i++) {
-                System.out.println(
-                        id.get(i)+" "
-                                +surname.get(i)+" "
-                                +name.get(i).charAt(0)+". "
-                                +patronymic.get(i).charAt(0)+". "
-                                +gender.get(i)+" "
-                                + age.get(i)
-                );
-            }
+        System.out.println("Для сортировки списка по возрасту введите sort и нажмите Enter");
+        System.out.println("Для окончания работы программы введите любую букву и нажмите Enter");
+        input = in.nextLine();
+
+        if (input.equals("sort")){
+            System.out.println("Сортировка");
+            Collections.sort(id, new Comparator<Integer>() {
+                @Override
+                public int compare(Integer o1, Integer o2) {
+                    return age.get(o1)- age.get(o2);
+                }
+            });
+            id.forEach(n -> System.out.println(id.get(n)+" "
+                                +surname.get(n)+" "
+                                +name.get(n).charAt(0)+". "
+                               +patronymic.get(n).charAt(0)+". "
+                                +gender.get(n)+" "
+                                + age.get(n)));
+//            Collections.sort(age);
+//            for (int i = 0; i < id.size(); i ++) {
+//                System.out.println(
+//                        id.get(i)+" "
+//                                +surname.get(i)+" "
+//                                +name.get(i).charAt(0)+". "
+//                                +patronymic.get(i).charAt(0)+". "
+//                                +gender.get(i)+" "
+//                                + age.get(i)
+//                );
+//            }
         }
 
+        if (!input.equals("sort")){
+            System.out.println("Всего доброго!");
+        }
     }
-
 }
