@@ -68,17 +68,6 @@ public class Main {
                                +patronymic.get(n).charAt(0)+". "
                                 +gender.get(n)+" "
                                 + age.get(n)));
-//            Collections.sort(age);
-//            for (int i = 0; i < id.size(); i ++) {
-//                System.out.println(
-//                        id.get(i)+" "
-//                                +surname.get(i)+" "
-//                                +name.get(i).charAt(0)+". "
-//                                +patronymic.get(i).charAt(0)+". "
-//                                +gender.get(i)+" "
-//                                + age.get(i)
-//                );
-//            }
         }
 
         if (!input.equals("sort")){
