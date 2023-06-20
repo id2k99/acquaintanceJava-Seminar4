@@ -25,10 +25,10 @@ public class Main {
         System.out.println("Для выхода введите quit и нажмите Enter");
         System.out.println("Для сортировки списка по возрасту введите sort и нажмите Enter");
 
-        while (!input.equals("quit") | !input.equals("sort")){
-            input = in.nextLine();
-            if (!input.equals("quit") | !input.equals("sort")){
-                String [] tmp = input.split(" ");
+        while (!input.equals("quit") | !input.equals("sort")){    // вот тут не могу понять почему не срабатывает
+            input = in.nextLine();                                // условие quit или sort для выхода из цикла.
+            if (!input.equals("quit") | !input.equals("sort")){   // когда по остаётся что-то одно, quit или sort
+                String [] tmp = input.split(" ");           // то условие срабатывает
                 id.add(count);
                 surname.add(tmp[0]);
                 name.add(tmp[1]);
@@ -51,8 +51,8 @@ public class Main {
             }
         }
 
-        if (input.equals("sort")){
-            System.out.println("Сортировка");
+        if (input.equals("sort")){                                  //отсортировал Список age, а как его связать
+            System.out.println("Сортировка");                       //с другими спсиками понять не могу.
             Collections.sort(age);
             for (int i = 0; i < id.size(); i++) {
                 System.out.println(
